@@ -160,7 +160,7 @@ function BackupManager(config) {
         ]);
     }
 
-    me.addMountForBackup = function addMountForBackupRestore() {
+    me.addMountForBackup = function addMountForBackup() {
         var resp = jelastic.env.file.AddMountPointById(config.envName, session, config.backupExecNode, "/opt/backup", 'nfs4', null, '/data/', config.storageNodeId, 'WPBackupRestore', false);
         if (resp.result != 0) {
             var title = "Backup storage " + config.storageEnv + " is unreacheable",
@@ -174,7 +174,7 @@ function BackupManager(config) {
         return resp;
     }
 
-    me.addMountForRestore = function addMountForBackupRestore() {
+    me.addMountForRestore = function addMountForRestore() {
         var resp = jelastic.env.file.AddMountPointByGroup(config.envName, session, "cp", "/opt/backup", 'nfs4', null, '/data/', config.storageNodeId, 'WPBackupRestore', false);
         if (resp.result != 0) {
             var title = "Backup storage " + config.storageEnv + " is unreacheable",
