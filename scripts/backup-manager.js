@@ -198,7 +198,7 @@ function BackupManager(config) {
                 }
             }
         }
-        allMounts = jelastic.env.file.GetMountPoints(config.envName, session, null, "cp").array;
+        allMounts = jelastic.env.file.GetMountPoints(config.envName, session).array;
         for (var i = 0, n = allMounts.length; i < n; i++) {
             if (allMounts[i].sourcePath == "/data" && allMounts[i].path == "/opt/backup" && allMounts[i].name == "WPBackupRestore" && allMounts[i].type == "INTERNAL") {
                 resp = jelastic.env.file.RemoveMountPointByGroup(config.envName, session, "cp", "/opt/backup");
